@@ -50,22 +50,22 @@ categorical_features = [
 
 
 # 4. Build preprocessing pipeline
-numerical_transformer = StandardScaler()
+scaler = StandardScaler()
 
-categorical_transformer = OneHotEncoder(handle_unknown="ignore")
+ohe_encoder = OneHotEncoder(handle_unknown="ignore")
 
 preprocessor = ColumnTransformer(
     transformers=[
-        ("num", numerical_transformer, numerical_features),
-        ("cat", categorical_transformer, categorical_features),
+        ("num", scaler, numerical_features),
+        ("cat", ohe_encoder, categorical_features),
     ]
 )
 
 
 # 5. Define classifier
 classifier = RandomForestClassifier(
-    n_estimators=300,
-    max_depth=12,
+    n_estimators=500,
+    max_depth=16,
     min_samples_leaf=3,
     class_weight="balanced",
     random_state=42,
@@ -113,7 +113,7 @@ print("MODEL EVALUATION")
 print("=" * 45)
 
 for name, value in metrics.items():
-    print(f"{name.upper():15}: {value:.4f}")
+    print(f"{name.title():15}: {value:.2f}")
 
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
