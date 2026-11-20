@@ -27,7 +27,7 @@ def load_metrics():
     """Load model evaluation metrics."""
 
     if not METRICS_PATH.exists():
-        return {}
+        return FileNotFoundError(f"Model file not found: {METRICS_PATH}")
 
     with open(METRICS_PATH, "r") as file:
         metrics = json.load(file)

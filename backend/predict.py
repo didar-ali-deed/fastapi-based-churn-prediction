@@ -5,7 +5,6 @@ def predict_customer(model, customer):
     """
     Generate a churn prediction for one customer.
     """
-
     # Convert Pydantic data into a dictionary
     customer_data = customer.model_dump()
 

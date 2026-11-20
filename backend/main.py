@@ -32,9 +32,9 @@ async def lifespan(app: FastAPI):
 
 # Initialize FastAPI
 app = FastAPI(
-    title="Customer Churn Prediction API",
+    title="Customer Churn Prediction API Using FastAPI",
     description=("A machine learning API powered by Scikit-learn and FastAPI."),
-    version="1.0.0",
+    version="1.0.1",
     lifespan=lifespan,
 )
 
@@ -46,7 +46,7 @@ def home():
     return {
         "message": "Welcome to ML Deployment API",
         "project": "Customer Churn Prediction",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "docs": "/docs",
         "status": "running",
     }
